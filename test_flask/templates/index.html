@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Jinja2 Test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Jinja2 Test</h1>
+        <div class="toolbar">
+            <button id="addBtn">新增</button>
+            <button id="editBtn">修改</button>
+            <button id="deleteBtn">删除</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="selectAll"></th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>籍贯</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                <tr>
+                    <td><input type="checkbox" class="record-checkbox"></td>
+                    <td>{{ record.name }}</td>
+                    <td>{{ record.gender }}</td>
+                    <td>{{ record.hometown }}</td>
+                    <td>{{ record.remarks }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 新增/修改对话框 -->
+    <div id="recordDialog" class="dialog">
+        <div class="dialog-content">
+            <h2 id="dialogTitle">新增记录</h2>
+            <form id="recordForm">
+                <div class="form-group">
+                    <label>姓名：</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label>性别：</label>
+                    <input type="text" id="gender" required>
+                </div>
+                <div class="form-group">
+                    <label>籍贯：</label>
+                    <input type="text" id="hometown" required>
+                </div>
+                <div class="form-group">
+                    <label>备注：</label>
+                    <input type="text" id="remarks">
+                </div>
+                <div class="dialog-buttons">
+                    <button type="submit">确定</button>
+                    <button type="button" id="cancelBtn">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
