@@ -5,6 +5,10 @@
     <title>Jinja2 Test</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script>
+        // 在HTML中初始化数据
+        window.INITIAL_DATA = {{ records|tojson|safe }};
+    </script>
 </head>
 <body>
     <!-- 将数据作为全局变量传递给Vue -->
