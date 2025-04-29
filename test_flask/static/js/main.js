@@ -1,8 +1,12 @@
+// 在Vue实例创建前获取初始数据
+const initialDataElement = document.getElementById('initial-data');
+const initialData = initialDataElement ? JSON.parse(initialDataElement.value) : [];
+
 new Vue({
     el: '#app',
     data() {
         return {
-            records: window.INITIAL_DATA || [],
+            records: initialData,
             selectAll: false,
             dialogVisible: false,
             dialogTitle: '新增记录',
